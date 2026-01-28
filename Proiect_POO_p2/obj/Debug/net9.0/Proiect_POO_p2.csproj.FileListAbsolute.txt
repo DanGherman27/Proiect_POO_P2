@@ -1,0 +1,14 @@
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\bin\Debug\net9.0\Proiect_POO_p2.exe
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\bin\Debug\net9.0\Proiect_POO_p2.deps.json
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\bin\Debug\net9.0\Proiect_POO_p2.runtimeconfig.json
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\bin\Debug\net9.0\Proiect_POO_p2.dll
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\bin\Debug\net9.0\Proiect_POO_p2.pdb
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\obj\Debug\net9.0\Proiect_POO_p2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\obj\Debug\net9.0\Proiect_POO_p2.AssemblyInfoInputs.cache
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\obj\Debug\net9.0\Proiect_POO_p2.AssemblyInfo.cs
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\obj\Debug\net9.0\Proiect_POO_p2.csproj.CoreCompileInputs.cache
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\obj\Debug\net9.0\Proiect_POO_p2.dll
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\obj\Debug\net9.0\refint\Proiect_POO_p2.dll
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\obj\Debug\net9.0\Proiect_POO_p2.pdb
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\obj\Debug\net9.0\Proiect_POO_p2.genruntimeconfig.cache
+C:\Users\gherm\OneDrive\Desktop\IS-UPT\POO_2_1\Proiect\Proiect_POO_p2\obj\Debug\net9.0\ref\Proiect_POO_p2.dll

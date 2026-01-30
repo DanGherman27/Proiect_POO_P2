@@ -23,30 +23,32 @@ public class ManagerParcari
     {
         for (int i = 0; i < Zona.Parcare.Count; i++)
         {
-            LocParcare locNou = null;
-
             if (Zona.Parcare[i].Id == IdLocParcare)
             {
+                LocParcare? locNou = null;
+                
                 if (Zona.Parcare[i] is LocStandard)
                 {
-                    locNou = new LocPremium(id: IdLocParcare);
+                    locNou = new LocPremium(IdLocParcare);
                 }
                 else if (Zona.Parcare[i] is LocPremium)
                 {
-                    locNou = new LocStandard(id: IdLocParcare);
+                    locNou = new LocStandard(IdLocParcare);
                 }
-                else
+                
+                if (locNou == null)
                 {
+                    Console.WriteLine("Tip necunoscut de loc de parcare.");
                     return;
                 }
+                
+                locNou.Disponibilitate = Zona.Parcare[i].Disponibilitate;
+                Zona.Parcare[i] = locNou;
+
+                Console.WriteLine("Tipul locului de parcare a fost modificat.");
+                return;
             }
-
-            locNou.Disponibilitate = Zona.Parcare[i].Disponibilitate;
-
-            Zona.Parcare[i] = locNou;
-
-            Console.WriteLine("Tipul locului de parcare a fost modificat.");
-            return;
         }
+        Console.WriteLine("Locul de parcare nu a fost gasit.");
     }
 }

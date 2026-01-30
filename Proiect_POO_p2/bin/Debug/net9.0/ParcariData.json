@@ -1,0 +1,68 @@
+[
+  {
+    "Id": 0,
+    "Pret": 5,
+    "Locuri": [
+      {
+        "$type": "premium",
+        "Pret": 10,
+        "Disponibilitate": false,
+        "Id": 0
+      },
+      {
+        "$type": "premium",
+        "Pret": 10,
+        "Disponibilitate": false,
+        "Id": 1
+      },
+      {
+        "$type": "premium",
+        "Pret": 10,
+        "Disponibilitate": false,
+        "Id": 2
+      }
+    ]
+  },
+  {
+    "Id": 1,
+    "Pret": 3,
+    "Locuri": [
+      {
+        "$type": "standard",
+        "Pret": 5,
+        "Disponibilitate": false,
+        "Id": 0
+      },
+      {
+        "$type": "premium",
+        "Pret": 10,
+        "Disponibilitate": false,
+        "Id": 1
+      },
+      {
+        "$type": "premium",
+        "Pret": 10,
+        "Disponibilitate": false,
+        "Id": 2
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Pret": 2,
+    "Locuri": [
+      {
+        "$type": "standard",
+        "Pret": 5,
+        "Disponibilitate": false,
+        "Id": 0
+      },
+      {
+        "$type": "premium",
+        "Pret": 10,
+        "Disponibilitate": false,
+        "Id": 1
+      }
+    ]
+  }
+]

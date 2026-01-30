@@ -30,13 +30,13 @@ public static class ManagerClienti
             if (opt_adaugare_client == 1)
             {
                 Client clientNou = new Client(username, password);
-                ManagerClienti.AddClient(clientNou);
+                ManagerClienti.AdaugaClient(clientNou);
                 Console.WriteLine("Clientul a fost creat!");
             }
         }
     }
 
-    public static void AddClient(Client clientNou)
+    public static void AdaugaClient(Client clientNou)
     {
         string jsonFile = File.ReadAllText("ClientData.json");
         List<Client> listaClienti = JsonSerializer.Deserialize<List<Client>>(jsonFile);
@@ -45,5 +45,41 @@ public static class ManagerClienti
         
         string updatedJson = JsonSerializer.Serialize(listaClienti, JsonOptions.Create());
         File.WriteAllText("ClientData.json", updatedJson);
+    }
+
+    public static void MeniuClient()
+    {
+        bool client_running = true;
+        while (client_running)
+        {
+            Console.Clear();
+            Console.WriteLine("1. Cumpara abonament nou");
+            Console.WriteLine("2. Abonamente active (Curente)");
+            Console.WriteLine("3. Istoric Abonamente (Expirate/Anulate)");
+            Console.WriteLine("4. Anuleaza un abonament activ");
+            Console.WriteLine("0. Deconectare");
+            Console.Write("Optiune: ");
+            int opt_client = Optiuni.Citeste();
+            switch (opt_client)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                
+                case 0:
+                    client_running = false;
+                    break;
+                
+                default:
+                    Console.WriteLine("Optiunea este invalida!");
+                    break;
+            }
+
+        }
     }
 }

@@ -3,7 +3,7 @@ using System.Text.Json;
 
 bool app_running = true;
 bool admin_running;
-
+Console.Clear();
 while(app_running)
 {
     
@@ -16,14 +16,18 @@ while(app_running)
     Console.Write("Optiunea dvs: ");
     int opt_user = Optiuni.Citeste();
     
+    Console.Clear();
+    
     if (opt_user == 1)
     {
         ManagerClienti.ParcurgereClienti(CitireUsername(), CitirePassword());
+        Console.Clear();
         ManagerClienti.MeniuClient();
     }
     else if (opt_user == 2)
     {
         ManagerAdmin.ParcurgereAdmini(CitireUsername(),CitirePassword());
+        Console.Clear();
         ManagerAdmin.MeniuAdmin();
     }
     else if (opt_user == 0)

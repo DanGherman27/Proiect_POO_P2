@@ -6,9 +6,11 @@ using System.Text.Json.Serialization;
 public abstract class LocParcare
 {
     public int Id { get; set; }
+    public bool Disponibilitate { get; set; }
 
     public LocParcare(int id)
     {
         Id = id;
+        Disponibilitate = false;
     }
 }

@@ -4,64 +4,70 @@
     "Pret": 5,
     "Locuri": [
       {
-        "$type": "premium",
-        "Pret": 10,
-        "Disponibilitate": false,
-        "Id": 0
+        "$type": "standard",
+        "Pret": 5,
+        "Id": 0,
+        "Disponibilitate": false
       },
       {
         "$type": "premium",
         "Pret": 10,
-        "Disponibilitate": false,
-        "Id": 1
-      },
-      {
-        "$type": "premium",
-        "Pret": 10,
-        "Disponibilitate": false,
-        "Id": 2
+        "Id": 1,
+        "Disponibilitate": false
       }
     ]
   },
   {
     "Id": 1,
-    "Pret": 3,
+    "Pret": 10,
     "Locuri": [
+      {
+        "$type": "premium",
+        "Pret": 10,
+        "Id": 1,
+        "Disponibilitate": false
+      },
       {
         "$type": "standard",
         "Pret": 5,
-        "Disponibilitate": false,
-        "Id": 0
-      },
-      {
-        "$type": "premium",
-        "Pret": 10,
-        "Disponibilitate": false,
-        "Id": 1
-      },
-      {
-        "$type": "premium",
-        "Pret": 10,
-        "Disponibilitate": false,
-        "Id": 2
+        "Id": 1,
+        "Disponibilitate": false
       }
     ]
   },
   {
     "Id": 2,
-    "Pret": 2,
+    "Pret": 30,
     "Locuri": [
       {
         "$type": "standard",
         "Pret": 5,
-        "Disponibilitate": false,
-        "Id": 0
+        "Id": 0,
+        "Disponibilitate": false
       },
       {
         "$type": "premium",
         "Pret": 10,
-        "Disponibilitate": false,
-        "Id": 1
+        "Id": 1,
+        "Disponibilitate": false
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Pret": 40,
+    "Locuri": [
+      {
+        "$type": "standard",
+        "Pret": 5,
+        "Id": 0,
+        "Disponibilitate": false
+      },
+      {
+        "$type": "premium",
+        "Pret": 10,
+        "Id": 1,
+        "Disponibilitate": false
       }
     ]
   }

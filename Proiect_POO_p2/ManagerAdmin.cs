@@ -57,6 +57,7 @@ public static class ManagerAdmin
                     int AlegereTipParcare = Optiuni.Citeste();
                     
                     ManagerParcari.AdaugaLocParcare(IdZona, AlegereTipParcare);
+                    Console.Clear();
                     break;
                 
                 case 2:
@@ -65,6 +66,7 @@ public static class ManagerAdmin
                     Console.WriteLine("Zona a fost creata cu un loc standard si unul premium!");
                     
                     ManagerParcari.AdaugareZonaParcare(ZoneParcari.Count, PretZonaNoua, new List<LocParcare>{new LocStandard(0), new LocPremium(1)});
+                    Console.Clear();
                     break;
                 
                 case 3:
@@ -76,7 +78,7 @@ public static class ManagerAdmin
                         Console.WriteLine("Zona nu exista!");
                         break;
                     }
-                    ManagerParcari.AfiseazaLocParcare(NrZona);
+                    ManagerParcari.AfiseazaLocuriParcare(NrZona);
                     Console.WriteLine("Ce loc doriti sa schimbati?\n"+
                                       "Loc: ");
                     int LocParcare = Optiuni.Citeste();
@@ -95,13 +97,50 @@ public static class ManagerAdmin
                     {
                         Console.WriteLine("Optiune Invalida!");
                     }
+                    Console.Clear();
                     break;
                 
                 case 4:
+                    Console.WriteLine("Zona in care doriti sa stergeti locul de parcare: ");
+                    int IdZonaStergere = Optiuni.Citeste();
+                    
+                    if (IdZonaStergere > ZoneParcari.Count)
+                    {
+                        Console.WriteLine("Zona nu exista!");
+                    }
+                    
+                    ManagerParcari.AfiseazaLocuriParcare(IdZonaStergere);
+                    
+                    Console.WriteLine("Ce loc doriti sa stergeti?");
+                    int LocSters = Optiuni.Citeste();
+                    
+                    ManagerParcari.StergereLocParcare(IdZonaStergere, LocSters);
+                    Console.Clear();
                     break;
+                
                 case 5:
+                    Console.WriteLine("Zona in care doriti sa stergeti locul de parcare: ");
+                    int IdZonaStearsa = Optiuni.Citeste();
+
+                    if (IdZonaStearsa > ZoneParcari.Count)
+                    {
+                        Console.WriteLine("Zona nu exista!");
+                    }
+                    
+                    ManagerParcari.StergereZonaParcare(IdZonaStearsa);
+                    Console.Clear();
                     break;
+                
                 case 6:
+                    Console.WriteLine("In ce zona doriti sa vedeti locurile de parcare?\n"+
+                                      "Zona: ");
+                    int IdZonaAfisareLocuri = Optiuni.Citeste();
+
+                    if (IdZonaAfisareLocuri > ZoneParcari.Count)
+                    {
+                        Console.WriteLine("Zona nu exista!");
+                    }
+                    ManagerParcari.AfiseazaLocuriParcare(IdZonaAfisareLocuri);
                     break;
 
                 case 0:
@@ -114,4 +153,5 @@ public static class ManagerAdmin
             }
         }
     }
+    
 }

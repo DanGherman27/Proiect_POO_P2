@@ -5,18 +5,6 @@ using System.Text.Json;
 
 public static class ManagerParcari
 {
-
-    public static void CitireParcari()
-    {
-        string ParcariJson = File.ReadAllText("ParcariData.json");
-        List <ZonaParcare> ListaZone = JsonSerializer.Deserialize<List<ZonaParcare>>(ParcariJson);
-
-        foreach (var zone in ListaZone)
-        {
-            Console.WriteLine(zone);
-        }
-    }
-
     public static void AdaugareZonaParcare(int id, int pret, List<LocParcare> locuriParcare)
     {
         string ParcariJson = File.ReadAllText("ParcariData.json");
@@ -28,7 +16,6 @@ public static class ManagerParcari
         string updateJson = JsonSerializer.Serialize(ListaZone, JsonOptions.Create());
         File.WriteAllText("ParcariData.json", updateJson);
     }
-
     public static void AdaugaLocParcare(int IdZona, int standard_or_premium)
     {
         string ParcariJson = File.ReadAllText("ParcariData.json");
@@ -60,7 +47,6 @@ public static class ManagerParcari
             
         }
     }
-
     public static void SchimbareTipLocParcare(int IdZona, int IdLoc, string TipLocNou)
     {
         string ParcariJson = File.ReadAllText("ParcariData.json");
@@ -96,7 +82,7 @@ public static class ManagerParcari
         string updateJson = JsonSerializer.Serialize(zonaParcare, JsonOptions.Create());
         File.WriteAllText("ParcariData.json", updateJson);
     }
-    public static void AfiseazaLocParcare(int IdZona)
+    public static void AfiseazaLocuriParcare(int IdZona)
     {
         string ParcariJson = File.ReadAllText("ParcariData.json");
         List<ZonaParcare> ZonaNoua = JsonSerializer.Deserialize<List<ZonaParcare>>(ParcariJson);
@@ -107,11 +93,61 @@ public static class ManagerParcari
             {
                 foreach (var loc in zone.Locuri)
                 {
-                    Console.WriteLine(loc);
+                    string tip = loc is LocPremium ? "Premium" : "Standard";
+                    string status = loc.Disponibilitate ? "Ocupat" : "Liber";
+
+                    Console.WriteLine($"ID Loc: {loc.Id} | Tip: {tip} | Status: {status}");
                 }
                 
             }
         }
+    }
+    public static void StergereLocParcare(int IdZona , int  IdLoc)
+    {
+        string ParcariJson = File.ReadAllText("ParcariData.json");
+        List<ZonaParcare> ZoneParcare = JsonSerializer.Deserialize<List<ZonaParcare>>(ParcariJson);
+
+        foreach (var zona in ZoneParcare)
+        {
+            if (IdZona == zona.Id)
+            {
+                LocParcare LocSters = null;
+                foreach (var locParcare in zona.Locuri)
+                {
+                    if (IdLoc == locParcare.Id)
+                    {
+                        LocSters = locParcare;
+                    }
+                }
+                
+                if (LocSters != null)
+                {
+                    zona.Locuri.Remove(LocSters);
+                }
+            }
+        }
+        
+        string updateJson = JsonSerializer.Serialize(ZoneParcare, JsonOptions.Create());
+        File.WriteAllText("ParcariData.json", updateJson);
+    }
+
+    public static void StergereZonaParcare(int IdZona)
+    {
+        string ParcariJson = File.ReadAllText("ParcariData.json");
+        List <ZonaParcare> ZoneParcare = JsonSerializer.Deserialize<List<ZonaParcare>>(ParcariJson);
+
+        ZonaParcare ZonaStearsa = null;
+        foreach (var zona in ZoneParcare)
+        {
+            if (IdZona == zona.Id)
+            {
+                ZonaStearsa = zona;
+            }
+        }
+
+        ZoneParcare.Remove(ZonaStearsa);
+        string updateJson = JsonSerializer.Serialize(ZoneParcare, JsonOptions.Create());
+        File.WriteAllText("ParcariData.json", updateJson);
     }
     
 }

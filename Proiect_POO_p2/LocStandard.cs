@@ -8,4 +8,9 @@ public class LocStandard : LocParcare
     {
         Pret = 5;
     }
+    public override float CalcularePret()
+    {
+        return Pret;
+    }
+
 }

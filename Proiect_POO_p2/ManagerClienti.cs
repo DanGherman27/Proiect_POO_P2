@@ -5,6 +5,7 @@ using System.Text.Json;
 
 public static class ManagerClienti
 {
+    public static Client ClientLogat { get; private set; }
     public static void ParcurgereClienti(string username, string password)
     {
         string ClientJson = File.ReadAllText("ClientData.json");
@@ -87,3 +88,4 @@ public static class ManagerClienti
         }
     }
 }
+

@@ -29,7 +29,7 @@ public class ManagerAbonamente
         {
             if (IdZona == ListaZona[i].Id)
             {
-                ZonaAleasa =  ListaZona[i];    
+                ZonaAleasa = ListaZona[i];    
             }
         }
         if (ZonaAleasa == null)
@@ -79,13 +79,13 @@ public class ManagerAbonamente
         switch (tipAbonament)
         {
             case "zi":
-                AbonamentNou = new AbonamentZi(LocAles, perioada);
+                AbonamentNou = new AbonamentZi(LocAles, perioada, ZonaAleasa.Id);
                 break;
             case "luna":
-                AbonamentNou = new AbonamentLuna(LocAles, perioada);
+                AbonamentNou = new AbonamentLuna(LocAles, perioada, ZonaAleasa.Id);
                 break;
             case "an":
-                AbonamentNou = new AbonamentAn(LocAles, perioada);
+                AbonamentNou = new AbonamentAn(LocAles, perioada, ZonaAleasa.Id);
                 break;
             default:
                 return;
@@ -122,11 +122,29 @@ public class ManagerAbonamente
                 string jsonUpdateParcari = JsonSerializer.Serialize(ListaZona, JsonOptions.Create());
                 File.WriteAllText("ParcariData.json", jsonUpdateParcari);
                 
+                AbonamentNou.IdZona = ZonaAleasa.Id;
                 Console.WriteLine("Abonament adaugat cu succes");
             }
             else
             {
                 Console.WriteLine("Clientul nu a fost gasit");
+            }
+        }
+    }
+
+    public static void AfisareAbonamenteActive()
+    {
+        string ClientiJson =  File.ReadAllText("ClientData.json");
+        List<Client> listaClienti = JsonSerializer.Deserialize<List<Client>>(ClientiJson, JsonOptions.Create());
+        
+        foreach (var client in listaClienti)
+        {
+            if (ManagerClienti.ClientLogat.UserName == client.UserName)
+            {
+                foreach (var abonament in client.AbonamenteActive)
+                {
+                    Console.WriteLine(abonament);
+                }
             }
         }
     }

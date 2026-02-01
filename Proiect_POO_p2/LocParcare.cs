@@ -13,4 +13,5 @@ public abstract class LocParcare
         Id = id;
         Disponibilitate = false;
     }
+    public abstract float CalcularePret();
 }

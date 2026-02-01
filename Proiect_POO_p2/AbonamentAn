@@ -4,5 +4,6 @@ class AbonamentAn : Abonament
 {
     public AbonamentAn(LocParcare locParcare, int perioada) : base( locParcare, perioada) { }
 
-    public override float PretFinal => (Perioada * LocParcare.CalcularePret());
+    private float Discount = 0.6f;
+    public override float PretFinal => (Perioada * LocParcare.CalcularePret() * 365 * Discount);
 }

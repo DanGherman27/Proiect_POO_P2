@@ -68,6 +68,7 @@ public static class ManagerClienti
                     ManagerAbonamente.CumparaAbonament();
                     break;
                 case 2:
+                    ManagerAbonamente.AfisareAbonamenteActive();
                     break;
                 case 3:
                     break;
@@ -88,4 +89,5 @@ public static class ManagerClienti
         }
     }
 }
+
 

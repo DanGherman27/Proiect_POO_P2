@@ -13,10 +13,10 @@ public class ManagerAbonamente
 
         foreach (var parcare in ListaZona)
         {
-            Console.WriteLine($"Parcare {parcare.Id},");
+            Console.WriteLine($"Zona Parcare {parcare.Id}:");
             foreach (var locParcare in parcare.Locuri)
             {
-                Console.WriteLine($"Loc parcare {locParcare.Id}");
+                Console.WriteLine($"Loc parcare {locParcare}, Id: {locParcare.Id}, Disponibilitate:  {locParcare.Disponibilitate}");
             }
         }
         
@@ -55,6 +55,11 @@ public class ManagerAbonamente
             Console.WriteLine("Parcarea nu există.");
             return;
         }
+        if (LocAles.Disponibilitate == false)
+        {
+            Console.WriteLine($"Loc parcare {LocAles.Id} din Zona Parcare: {ZonaAleasa.Id}, nu este disponibil in acest moment.");
+            return;
+        }
         
         //Alege tipul de abonament
         string tipAbonament;
@@ -85,21 +90,44 @@ public class ManagerAbonamente
             default:
                 return;
         }
+        
         //Se afiseaza costul
         Console.WriteLine($"Cost total: {AbonamentNou.PretFinal} lei");
         
-        //Se adauga in Lista AbonamenteActive
-        List<Abonament> AbonamenteActive = new List<Abonament>();
-        
-        if (File.Exists("AbonamentData.json"))
+        //Se adauga in Lista AbonamenteActive din Client
+        if (File.Exists("ClientData.json"))
         {
-            string vechiJson = File.ReadAllText("AbonamentData.json");
-            AbonamenteActive = JsonSerializer.Deserialize<List<Abonament>>(vechiJson, JsonOptions.Create());
+            string jsonContinut = File.ReadAllText("ClientData.json");
+            List<Client> listaClienti = JsonSerializer.Deserialize<List<Client>>(jsonContinut, JsonOptions.Create()) ?? new List<Client>();
+            
+            Client clientGasit = null;
+            foreach (var client in listaClienti)
+            {
+                if (ManagerClienti.ClientLogat.UserName == client.UserName)
+                {
+                    clientGasit = client;
+                    break;
+                }
+            }
+            
+            if (clientGasit != null)
+            {
+                clientGasit.AbonamenteActive.Add(AbonamentNou);
+                
+                LocAles.Disponibilitate = false;
+                
+                string jsonUpdate = JsonSerializer.Serialize(listaClienti, JsonOptions.Create());
+                File.WriteAllText("ClientData.json", jsonUpdate);
+                
+                string jsonUpdateParcari = JsonSerializer.Serialize(ListaZona, JsonOptions.Create());
+                File.WriteAllText("ParcariData.json", jsonUpdateParcari);
+                
+                Console.WriteLine("Abonament adaugat cu succes");
+            }
+            else
+            {
+                Console.WriteLine("Clientul nu a fost gasit");
+            }
         }
-        
-        AbonamenteActive.Add(AbonamentNou);
-        string AbonamenteJson = JsonSerializer.Serialize(AbonamenteActive, JsonOptions.Create());
-        File.WriteAllText("AbonamentData.json", AbonamenteJson);
     }
-    
 }

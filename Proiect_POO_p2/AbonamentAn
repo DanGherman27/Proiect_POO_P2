@@ -1,0 +1,8 @@
+namespace Proiect_POO_p2;
+
+class AbonamentAn : Abonament
+{
+    public AbonamentAn(LocParcare locParcare, int perioada) : base( locParcare, perioada) { }
+
+    public override float PretFinal => (Perioada * LocParcare.CalcularePret());
+}

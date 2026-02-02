@@ -14,6 +14,12 @@
         "Pret": 10,
         "Id": 1,
         "Disponibilitate": false
+      },
+      {
+        "$type": "standard",
+        "Pret": 5,
+        "Id": 2,
+        "Disponibilitate": true
       }
     ]
   },
@@ -62,6 +68,24 @@
         "Pret": 5,
         "Id": 0,
         "Disponibilitate": false
+      },
+      {
+        "$type": "premium",
+        "Pret": 10,
+        "Id": 1,
+        "Disponibilitate": true
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "Pret": -1,
+    "Locuri": [
+      {
+        "$type": "standard",
+        "Pret": 5,
+        "Id": 0,
+        "Disponibilitate": true
       },
       {
         "$type": "premium",

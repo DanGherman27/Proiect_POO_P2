@@ -73,8 +73,10 @@ public static class ManagerClienti
                     ManagerAbonamente.AfisareAbonamenteActive();
                     break;
                 case 3:
+                    ManagerAbonamente.AfisareIstoricAbonament();
                     break;
                 case 4:
+                    ManagerAbonamente.AnulareAbonament();
                     break;
                 case 5:
                     ManagerParcari.AfisareParcari();

@@ -7,7 +7,6 @@ public class ManagerAbonamente
 {
     public static void CumparaAbonament()
     {
-        //Afisare Parcari
         string ParcariJson = File.ReadAllText("ParcariData.json");
         List<ZonaParcare> ListaZona = JsonSerializer.Deserialize<List<ZonaParcare>>(ParcariJson, JsonOptions.Create());
 
@@ -20,7 +19,6 @@ public class ManagerAbonamente
             }
         }
         
-        //Alege Zona, locul
         Console.WriteLine("Alege Id-ul parcarii dorite: ");
         int IdZona  = int.Parse(Console.ReadLine());
 
@@ -61,7 +59,6 @@ public class ManagerAbonamente
             return;
         }
         
-        //Alege tipul de abonament
         string tipAbonament;
         do
         {
@@ -70,7 +67,6 @@ public class ManagerAbonamente
             
         } while (tipAbonament != "zi" && tipAbonament != "luna" && tipAbonament != "an");
         
-        //Alege perioada
         Console.WriteLine("Alege perioada abonamentului: ");
         int perioada = int.Parse(Console.ReadLine());
 
@@ -91,10 +87,8 @@ public class ManagerAbonamente
                 return;
         }
         
-        //Se afiseaza costul
         Console.WriteLine($"Cost total: {AbonamentNou.PretFinal} lei");
         
-        //Se adauga in Lista AbonamenteActive din Client
         if (File.Exists("ClientData.json"))
         {
             string jsonContinut = File.ReadAllText("ClientData.json");
@@ -154,5 +148,91 @@ public class ManagerAbonamente
                 }
             }
         }
+    }
+    
+    public static void AfisareIstoricAbonament()
+    {
+        string ClientiiJson = File.ReadAllText("ClientData.json");
+        List<Client> ListeClienti=JsonSerializer.Deserialize<List<Client>>(ClientiiJson, JsonOptions.Create());
+
+        foreach (var client in ListeClienti)
+        {
+            if (ManagerClienti.ClientLogat.UserName == client.UserName)
+            {
+                foreach (var abonament in client.IstoricAbonamente)
+                {
+                   Console.WriteLine(abonament); 
+                }
+            }
+        }
+    }
+
+    public static void AnulareAbonament()
+    {
+        if (File.Exists("ClientData.json"))
+        {
+            string JsonContinut = File.ReadAllText("ClientData.json");
+            List<Client> listaClienti=JsonSerializer.Deserialize<List<Client>>(JsonContinut, JsonOptions.Create());
+            
+            string ParcariJson = File.ReadAllText("ParcariData.json");
+            List<ZonaParcare> listaParcari = JsonSerializer.Deserialize<List<ZonaParcare>>(ParcariJson, JsonOptions.Create());
+            
+            Client clientGasit = null;
+            foreach (var client in listaClienti)
+            {
+                if (ManagerClienti.ClientLogat.UserName == client.UserName)
+                {
+                    clientGasit = client;
+                    break;
+                }
+            }
+
+            if (clientGasit == null)
+            {
+                Console.WriteLine("Nu sunt abaonamente active de sters");
+                return;
+            }
+            Console.WriteLine("Abonamente active:");
+            for (int i = 0; i < clientGasit.AbonamenteActive.Count; i++)
+            {
+                var ab=clientGasit.AbonamenteActive[i];
+                Console.WriteLine($"[{i}] Zona: {ab.IdZona}, Loc:{ab.LocParcare.Id}");
+            }
+            
+            Console.WriteLine("Introdu indexul pe care doresti sa il stergi:");
+            int index=int.Parse(Console.ReadLine());
+
+            if (index >= 0 && index < clientGasit.AbonamenteActive.Count)
+            {
+                Abonament deAnulat=clientGasit.AbonamenteActive[index];
+                foreach (var zona in listaParcari)
+                {
+                    if (zona.Id == deAnulat.IdZona)
+                    {
+                        foreach (var loc in zona.Locuri)
+                        {
+                            if (loc.Id == deAnulat.LocParcare.Id)
+                            {
+                                loc.Disponibilitate = true;
+                            }
+                        }
+                    }
+                }
+
+                clientGasit.AbonamenteActive.RemoveAt(index);
+                clientGasit.IstoricAbonamente.Add(deAnulat);
+                
+                File.WriteAllText("ClientData.json", JsonSerializer.Serialize(listaClienti, JsonOptions.Create()));
+                File.WriteAllText("ParcariData.json",JsonSerializer.Serialize(listaParcari, JsonOptions.Create()));
+                
+                Console.WriteLine("Abonament anulat cu succes");
+            }
+            else
+            {
+                Console.WriteLine("Numar invalid!");
+            }
+            
+        }
+        
     }
 }

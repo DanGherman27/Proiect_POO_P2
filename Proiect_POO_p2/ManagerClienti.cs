@@ -5,6 +5,7 @@ using System.Text.Json;
 
 public static class ManagerClienti
 {
+    public static Client ClientLogat { get; private set; }
     public static void ParcurgereClienti(string username, string password)
     {
         string ClientJson = File.ReadAllText("ClientData.json");
@@ -16,6 +17,7 @@ public static class ManagerClienti
             if (client.UserName == username && client.Password == password)
             {
                 Console.WriteLine("Autentificare reusita ");
+                ClientLogat = client;
                 client_gasit = true;
                 break;
             }
@@ -31,6 +33,7 @@ public static class ManagerClienti
             {
                 Client clientNou = new Client(username, password);
                 ManagerClienti.AdaugaClient(clientNou);
+                ClientLogat = clientNou;
                 Console.WriteLine("Clientul a fost creat!");
             }
         }
@@ -52,34 +55,41 @@ public static class ManagerClienti
         bool client_running = true;
         while (client_running)
         {
-            Console.Clear();
-            Console.WriteLine("1. Cumpara abonament nou");
-            Console.WriteLine("2. Abonamente active (Curente)");
-            Console.WriteLine("3. Istoric Abonamente (Expirate/Anulate)");
-            Console.WriteLine("4. Anuleaza un abonament activ");
-            Console.WriteLine("0. Deconectare");
-            Console.Write("Optiune: ");
+            Console.Write("\n\n");
+            Console.WriteLine("1. Cumpara abonament nou\n" +
+                              "2. Abonamente active (Curente)\n" +
+                              "3. Istoric Abonamente (Expirate/Anulate)\n" +
+                              "4. Anuleaza un abonament activ\n" +
+                              "5. Vizualizare parcari\n"+
+                              "0. Deconectare\n" +
+                              "Optiune: ");
             int opt_client = Optiuni.Citeste();
             switch (opt_client)
             {
                 case 1:
+                    ManagerAbonamente.CumparaAbonament();
                     break;
                 case 2:
+                    ManagerAbonamente.AfisareAbonamenteActive();
                     break;
                 case 3:
                     break;
                 case 4:
                     break;
+                case 5:
+                    ManagerParcari.AfisareParcari();
+                    break;
                 
                 case 0:
                     client_running = false;
+                    Console.Clear();
                     break;
                 
                 default:
                     Console.WriteLine("Optiunea este invalida!");
                     break;
             }
-
         }
     }
 }
+

@@ -11,6 +11,7 @@ public abstract class LocParcare
     public LocParcare(int id)
     {
         Id = id;
-        Disponibilitate = false;
+        Disponibilitate = true;
     }
+    public abstract float CalcularePret();  
 }

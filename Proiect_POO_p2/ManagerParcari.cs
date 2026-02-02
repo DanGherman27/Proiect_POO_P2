@@ -102,6 +102,21 @@ public static class ManagerParcari
             }
         }
     }
+
+    public static void AfisareParcari()
+    {
+        string jsonParcari = File.ReadAllText("ParcariData.json");
+        List<ZonaParcare> zoneParcare = JsonSerializer.Deserialize<List<ZonaParcare>>(jsonParcari);
+
+        foreach (var zone in zoneParcare)
+        {
+            Console.WriteLine("Zona: " + zone.Id);
+            foreach (var loc in zone.Locuri)
+            {
+                Console.WriteLine($"Loc: {loc.Id} | Liber: {loc.Disponibilitate}");
+            }
+        }
+    }
     public static void StergereLocParcare(int IdZona , int  IdLoc)
     {
         string ParcariJson = File.ReadAllText("ParcariData.json");

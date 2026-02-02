@@ -2,12 +2,11 @@
 using System.Text.Json;
 
 bool app_running = true;
-bool admin_running;
+
 Console.Clear();
 while(app_running)
 {
     
-    admin_running = true;
     
     Console.WriteLine("Buna ziua, ce tip de cont doriti sa accesati?\n" +
                       "1.Client\n" +
@@ -22,13 +21,23 @@ while(app_running)
     {
         ManagerClienti.ParcurgereClienti(CitireUsername(), CitirePassword());
         Console.Clear();
-        ManagerClienti.MeniuClient();
+        if(ManagerClienti.ClientLogat != null)
+            ManagerClienti.MeniuClient();
     }
     else if (opt_user == 2)
     {
-        ManagerAdmin.ParcurgereAdmini(CitireUsername(),CitirePassword());
+        bool ExistaAdmin = ManagerAdmin.ParcurgereAdmini(CitireUsername(),CitirePassword());
         Console.Clear();
-        ManagerAdmin.MeniuAdmin();
+        if (ExistaAdmin)
+        {
+            ManagerAdmin.MeniuAdmin();
+            Console.Clear();
+        }
+        else
+        {
+            Console.WriteLine("Mai incercati odata!");
+            Console.Clear();
+        }
     }
     else if (opt_user == 0)
     {

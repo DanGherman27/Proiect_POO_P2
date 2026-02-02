@@ -3,7 +3,7 @@ using System.Text.Json;
 
 public static class ManagerAdmin
 {
-    public static void ParcurgereAdmini(string username, string password)
+    public static bool ParcurgereAdmini(string username, string password)
     {
         string AdminJson = File.ReadAllText("AdminData.json");
         List<Admin> Administrators = JsonSerializer.Deserialize<List<Admin>>(AdminJson);
@@ -18,11 +18,7 @@ public static class ManagerAdmin
                 break;
             }
         }
-
-        if (!admin_gasit)
-        {
-            Console.WriteLine("Mai incercati odata!");
-        }
+        return admin_gasit;
     }
 
     public static void MeniuAdmin()
@@ -40,7 +36,10 @@ public static class ManagerAdmin
                               "4. Stergere loc parcare\n"+
                               "5. Sterge parcare \n"+
                               "6. Afiseaza locuri intr-o zona\n"+
-                              "0. Iesire meniu admin\n");
+                              "7. Afiseaza parcari\n"+
+                              "0. Iesire meniu admin\n"+
+                              "Optiunea: ");
+                                
             int opt_admin = Optiuni.Citeste();
             switch (opt_admin)
             {
@@ -142,9 +141,14 @@ public static class ManagerAdmin
                     }
                     ManagerParcari.AfiseazaLocuriParcare(IdZonaAfisareLocuri);
                     break;
+                
+                case 7:
+                    ManagerParcari.AfisareParcari();
+                    break;
 
                 case 0:
                     admin_running = false;
+                    Console.Clear();
                     break;
 
                 default:

@@ -1,27 +1,79 @@
 [
   {
     "IstoricAbonamente": [],
+    "AbonamenteActive": [
+      {
+        "$type": "zi",
+        "PretFinal": 60,
+        "IdZona": 1,
+        "LocParcare": {
+          "$type": "standard",
+          "Pret": 5,
+          "Id": 1,
+          "Disponibilitate": false
+        },
+        "Perioada": 12,
+        "DateTime": "2026-02-01T23:38:15.528656+02:00"
+      },
+      {
+        "$type": "an",
+        "PretFinal": 4380,
+        "IdZona": 0,
+        "LocParcare": {
+          "$type": "premium",
+          "Pret": 10,
+          "Id": 1,
+          "Disponibilitate": false
+        },
+        "Perioada": 2,
+        "DateTime": "2026-02-01T23:38:15.5287916+02:00"
+      }
+    ],
     "UserName": "Dan",
     "Password": "client"
   },
   {
     "IstoricAbonamente": [],
+    "AbonamenteActive": [],
     "UserName": "David",
     "Password": "client"
   },
   {
     "IstoricAbonamente": [],
+    "AbonamenteActive": [],
     "UserName": "Beni",
     "Password": "client"
   },
   {
     "IstoricAbonamente": [],
+    "AbonamenteActive": [],
     "UserName": "Dan",
     "Password": "admin"
   },
   {
     "IstoricAbonamente": [],
+    "AbonamenteActive": [],
     "UserName": "dada",
     "Password": "wef"
+  },
+  {
+    "IstoricAbonamente": [],
+    "AbonamenteActive": [
+      {
+        "$type": "luna",
+        "PretFinal": 200,
+        "IdZona": 3,
+        "LocParcare": {
+          "$type": "standard",
+          "Pret": 5,
+          "Id": 0,
+          "Disponibilitate": false
+        },
+        "Perioada": 40,
+        "DateTime": "2026-02-01T23:38:15.5238419+02:00"
+      }
+    ],
+    "UserName": "dan",
+    "Password": "dan"
   }
 ]
